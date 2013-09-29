@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+#Rails gems
 gem 'rails', '4.0.0'
 gem 'pg'
 
@@ -12,16 +13,21 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+#To Heroku deploy
 gem 'rails_12factor', group: :production
 
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+#my app
+gem 'paperclip'
+gem 'will_paginate'
+gem 'devise'
 
 gem 'debugger', group: [:development, :test]
+
+group :test do
+  gem 'factory_girl'
+  gem 'database_cleaner'
+  gem 'shoulda'
+  gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'simplecov-rcov'
+end

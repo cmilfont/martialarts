@@ -6,9 +6,71 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+  
 <body>
 
+<% if current_page? root_path %>
+<div id="topo">
+<% else %>
+<div id="topo" class="interno">
+<% end %>
+
+<div class="container">
+
+  <% if current_page? root_path %>
+  <img src="/assets/logo.gif" alt="TREENING" border="0" style="margin-top: 15px" />
+  <% else %>
+  <img src="/assets/logoPeq.gif" alt="TREENING" border="0" style="margin-top: 15px" />
+  <% end %>
+
+
+  <% if current_page? root_path %>
+  <ul id="menu">
+  <% else %>
+  <ul id="menu" class="interno">
+  <% end %>
+
+    <li><%= link_to_unless_current('Início', root_path) { link_to 'Início', root_path, :class => 'ativo' } %></li>
+    <li><%= link_to_unless_current('Vídeos', techniques_path) { link_to 'Vídeos', root_path, :class => 'ativo' } %></li>
+   <% if current_user %>
+    <li><%= link_to_unless_current('Perfil', user_path(current_user), {:class => current_page?(edit_user_registration_path(current_user)) ? "ativo" : "" } ) { link_to 'Perfil', user_path(current_user), :class => 'ativo' } %></li>
+    <li><%= link_to "Sair", destroy_user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
+    <% else %>
+    <li><%= link_to_unless_current('Registrar', new_user_registration_path) { link_to 'Registrar', new_user_registration_path, :class => 'ativo' } %></li>
+    <li><%= link_to_unless_current('Login', new_user_session_path) { link_to 'Login', new_user_session_path, :class => 'ativo' } %></li>      
+    <% end %>
+  </ul> <!-- /menu -->
+</div> <!-- /container -->
+</div> <!-- /topo -->
+
 <%= yield %>
+
+<div id="base">
+<div class="container">
+
+  <ul>
+    <li>
+      <h1><span>Parceria</span> Jornal O Povo</h1>
+      <p>O que você deseja fazer ou falar para as pessoas? O que você deseja fazer ou falar para as pessoas? O que você deseja fazer ou falar para as pessoas? </p>
+    </li>
+    <li>
+      <h1><span>Parceria</span> Jornal O Povo</h1>
+      <p>O que você deseja fazer ou falar para as pessoas? O que você deseja fazer ou falar para as pessoas? O que você deseja fazer ou falar para as pessoas? </p>
+    </li>
+    <li>
+      <h1><span>Parceria</span> Jornal O Povo</h1>
+      <p>O que você deseja fazer ou falar para as pessoas? O que você deseja fazer ou falar para as pessoas? O que você deseja fazer ou falar para as pessoas? </p>
+    </li>
+  </ul>
+
+</div> <!-- /container -->
+</div> <!-- /base -->
+
+   <div id="ft">
+   	<p>
+
+   	</p>
+   </div>
 
 </body>
 </html>
