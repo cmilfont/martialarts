@@ -1,0 +1,16 @@
+development: &development
+  adapter: postgresql
+  encoding: utf8
+  database: martialarts_development
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+  
+test: &test
+  <<: *development
+  database: martialarts_test
+
+production: &production
+  <<: *development
+  database: martialarts_production
