@@ -21,7 +21,7 @@ body {
 /* TOPO */
 #topo {
   height: 128px;
-  background: #1872BE url("/assets/topoFundo.gif") repeat-x top;
+  background: #1872BE url("/assets/topoFundo.png") repeat-x top;
 }
 #topo.interno {
   height: 60px;
@@ -132,7 +132,7 @@ ul#menu a:hover {
 /* CONTEUDO */
 #conteudo {
   padding: 35px 0;
-  background: #FFFFFF url("/assets/conteudoFundo.gif") repeat-x top;
+  background: #FFFFFF url("/assets/conteudoFundo.png") repeat-x top;
   border-top: 1px solid #6C676B;
 }
 #conteudo h1 {
