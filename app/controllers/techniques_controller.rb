@@ -2,7 +2,7 @@ class TechniquesController < ApplicationController
   
   before_action :set_technique, :only => [:show, :edit, :update, :destroy]
   
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update]
   
   respond_to :json, :html
   
@@ -27,6 +27,11 @@ class TechniquesController < ApplicationController
     @technique = Technique.new params.require(:technique)
     @technique.user = current_user
     @technique.save
+    respond_with @technique
+  end
+  
+  def update
+    @technique.update params.require(:technique)
     respond_with @technique
   end
   
