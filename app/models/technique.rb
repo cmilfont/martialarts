@@ -2,11 +2,13 @@ class Technique < ActiveRecord::Base
   
   belongs_to :user
   
-  has_and_belongs_to_many :categories
-  has_and_belongs_to_many :martialarts
+  has_many :martialart_techniques, :inverse_of => :technique
+  accepts_nested_attributes_for :martialart_techniques
+  
+  has_many :martialarts, :through => :martialart_techniques
   
   has_many :videos
   
-  validates_presence_of :name, :description
+  validates_presence_of :name, :description, :user
     
 end

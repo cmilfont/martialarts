@@ -5,8 +5,9 @@ describe TechniquesController do
   describe "GET #index" do
         
     it "Should list Techniques" do
-      Technique.should_receive(:all).once.and_return [Technique.new]
-      get :index, :format => :json
+      Technique.stub_chain(:all, :order).and_return [Technique.new]
+      Technique.should_receive(:all).once
+      get :index
     end
     
   end

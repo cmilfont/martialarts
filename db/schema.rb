@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130929184408) do
+ActiveRecord::Schema.define(version: 20130930015914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
     t.string   "name"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,6 +26,13 @@ ActiveRecord::Schema.define(version: 20130929184408) do
   create_table "categories_techniques", force: true do |t|
     t.integer "category_id"
     t.integer "technique_id"
+  end
+
+  create_table "martialart_techniques", force: true do |t|
+    t.integer  "martialart_id"
+    t.integer  "technique_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "martialarts", force: true do |t|
@@ -58,6 +66,7 @@ ActiveRecord::Schema.define(version: 20130929184408) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 20130929184408) do
 
   create_table "videos", force: true do |t|
     t.integer  "technique_id"
+    t.integer  "user_id"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
