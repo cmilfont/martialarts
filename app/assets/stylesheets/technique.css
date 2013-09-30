@@ -244,7 +244,7 @@ ul#menu a:hover {
 #base {
   padding: 20px 0;
   height: 128px;
-  background: #1973BF url("/assets/baseFundo.jpg") no-repeat center;
+  background: #1973BF url("/assets/baseFundo.png") no-repeat center;
   border-top: 3px solid #0E4A7C;
 }
 #base li {
