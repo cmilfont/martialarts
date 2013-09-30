@@ -23,7 +23,7 @@ Martialarts::Application.configure do
   config.serve_static_assets = false
 
 
-  config.assets.precompile =+= %w( .svg .eot .gif .woff .ttf .jpg)
+  config.assets.precompile += %w( .svg .eot .gif .woff .ttf .jpg)
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
