@@ -27,5 +27,7 @@ module Martialarts
     
     config.action_controller.permit_all_parameters = true
     
+    config.assets.enabled = true
+    
   end
 end
