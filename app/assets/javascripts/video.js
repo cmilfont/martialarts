@@ -2,9 +2,11 @@ function Video(technique_id) {
   
   var $links = $(".esq .quadro");
   var controller = new VideosController;
+  var $origem = $("[name='origem']");
+  var $link = $("#add");
   
   var inserir = function(video) {
-
+    
     $('<iframe />', {
         src: video.link,
         height: "344",
@@ -12,6 +14,8 @@ function Video(technique_id) {
         allowfullscreen: true, 
         content: "Caso esse video n&amp;amp;atilde;o seja visualizado acesso o <a href=" + video.link + ">link diretamente</a>"
     }).prependTo($links);
+    
+    $link.val("");
 
   };
   
@@ -39,22 +43,21 @@ function Video(technique_id) {
   };
   
   var _cadastrar = function() {
-    var origem = $("[name='origem']").val();
-    var link = $("#add").val();
-    
-    if(link.length === 0) {
+    var value = $link.val();
+    var onde = $origem.val();
+    if(value.length === 0) {
       error(["Link não pode ser vazio."]);
       return false;
     }
     
-    if(!/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(link)){
+    if(!/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(value)){
       error(["Url está no formato errado."]);
       return false;
     }
         
     var json = {
       technique_id: technique_id,
-      link: tratar_link[origem]( link )
+      link: tratar_link[onde]( value )
     };
     controller.create(json, inserir, error);
     return false;

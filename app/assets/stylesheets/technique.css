@@ -312,3 +312,7 @@ a {
 .zebra-white {background: #fff;}
 /* /Feito por Milfont */
 
+.pagination {
+margin: auto;
+width: 200px;
+}
