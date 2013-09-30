@@ -78,7 +78,8 @@ ul#menu a:hover {
   border-top: 3px solid #B3B81D;
 }
 #meio.interno {
-  padding: 25px;
+  /*padding: 25px;*/
+  padding: .5px;
   font-size: 13px;
 }
 #meio h1 {
@@ -168,7 +169,7 @@ ul#menu a:hover {
   -webkit-border-radius: 8px;
 }
 
-#conteudo form label { width: 180px; }
+#conteudo form label { /*width: 180px;*/ }
 #conteudo form { width: 700px }
 
 #conteudo form h1 {
