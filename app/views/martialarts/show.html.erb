@@ -1,0 +1,26 @@
+<h1><span><%= @martialart.name %></span></h1>
+
+<p>
+  <%= @martialart.description %>
+</p>
+
+<%= link_to 'Edit', edit_martialart_path(@martialart) %> |
+<%= link_to 'Back', martialarts_path %>
+
+<div class="technique_thumbs">
+  <% 
+  @martialart.techniques.each do |technique| 
+    video = technique.videos.first
+    if video.present?
+  %>
+  
+    <div class="technique_thumb">
+      <span class="technique_thumb_name"><%= link_to technique.try(:name), technique %></span>
+      <%= get_thumb video %>
+    </div>
+  
+  <% 
+    end
+  end
+  %>
+</div>

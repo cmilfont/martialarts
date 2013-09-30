@@ -1,5 +1,7 @@
 Martialarts::Application.routes.draw do
   
+  resources :martialarts
+
   root 'techniques#index'
   
   devise_for :users

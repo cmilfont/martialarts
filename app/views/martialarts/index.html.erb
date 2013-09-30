@@ -1,0 +1,15 @@
+<h1><span>Martial Arts</span></h1>
+
+<% @martialarts.each do |martialart| %>
+
+ <h2><span><%= martialart.name %></span> (<%= pluralize martialart.techniques.count, "Technique" %>)</h2>
+ <p><%= truncate martialart.description, length: 200 %></p>
+ <p>
+  <%= link_to 'Show', martialart %>
+  <%= link_to('Edit', edit_martialart_path(martialart)) if admin? %>
+  <%= link_to('Destroy', martialart, method: :delete, data: { confirm: 'Are you sure?' }) if admin? %>
+ </p>
+
+<% end %>
+
+<%= link_to('New Martial Art', new_martialart_path) if admin? %>

@@ -1,0 +1,9 @@
+.technique_thumbs {
+  display: block;
+}
+
+.technique_thumb {
+  width: 120px;
+  display: inline-block;
+  margin: 15px;
+}
