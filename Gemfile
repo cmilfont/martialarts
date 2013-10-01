@@ -26,7 +26,7 @@ gem 'will_paginate'
 gem 'devise'
 
 #cache
-gem "iron_cache_rails"
+gem "iron_cache_rails" #, :git => 'git://github.com/milfont/iron_cache_rails.git'
 
 #transformar os controllers em js
 gem "djr"
