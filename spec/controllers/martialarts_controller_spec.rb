@@ -9,8 +9,8 @@ describe MartialartsController do
 
   describe "GET #index" do 
     it "Should list Martial Arts" do
-      Martialart.stub_chain(:all, :order).and_return [Martialart.new]
-      Martialart.should_receive(:all).once
+      Martialart.stub_chain(:order).and_return [Martialart.new]
+      Martialart.should_receive(:order).with(:name).once
       get :index
     end
   end
