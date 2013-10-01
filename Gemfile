@@ -30,6 +30,9 @@ gem 'memcachier'
 gem 'dalli'
 #gem "iron_cache_rails" #, :git => 'git://github.com/milfont/iron_cache_rails.git'
 
+#busca textual
+gem 'tire'
+
 #transformar os controllers em js
 gem "djr"
 

@@ -1,7 +1,8 @@
 Martialarts::Application.configure do
 
+  ENV['ELASTICSEARCH_URL'] = ENV['SEARCHBOX_URL']
+  
   config.cache_store = :dalli_store
-
 
   # Code is not reloaded between requests.
   config.cache_classes = true
