@@ -65,6 +65,8 @@ GEM
     i18n (0.6.5)
     iron_cache (1.4.0)
       iron_core (>= 0.5.1)
+    iron_cache_rails (0.1.5)
+      iron_cache (>= 1)
     iron_core (1.0.1)
       rest (>= 2.2.0)
     jquery-rails (3.0.4)
@@ -176,7 +178,7 @@ DEPENDENCIES
   devise
   djr
   factory_girl
-  iron_cache
+  iron_cache_rails
   jquery-rails
   paperclip
   pg
