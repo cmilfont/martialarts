@@ -26,7 +26,8 @@ module Martialarts
     # config.i18n.default_locale = :de
     
     config.action_controller.permit_all_parameters = true
-    config.cache_store = :iron_cache_store, {project_id: '524a9e775e261b000700000a', token: 'Y4rAGeHC22HQM_26UjOHwEblono'}
+    
+    #config.cache_store = :iron_cache_store, {project_id: '524a9e775e261b000700000a', token: 'Y4rAGeHC22HQM_26UjOHwEblono'}
     
   end
 end
