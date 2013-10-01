@@ -18,10 +18,17 @@ gem 'turbolinks'
 gem 'rails_12factor', group: :production
 
 #my app
+#uploads
 gem 'paperclip'
+#paginacao
 gem 'will_paginate'
+#controle de acesso e autenticacao
 gem 'devise'
 
+#cache
+gem "iron_cache"
+
+#transformar os controllers em js
 gem "djr"
 
 gem 'debugger', group: [:development, :test]
