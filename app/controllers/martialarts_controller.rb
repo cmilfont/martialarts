@@ -8,7 +8,7 @@ class MartialartsController < ApplicationController
   respond_to :json, :html
 
   def index
-    @martialarts = Martialart.all.order(:name)
+    @martialarts = Martialart.order(:name)
     respond_with @martialarts
   end
 

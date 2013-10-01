@@ -7,7 +7,7 @@ class TechniquesController < ApplicationController
   respond_to :json, :html
   
   def index
-    @techniques = Technique.all.order(:name).paginate :page => params[:page] || 1, :per_page => 10
+    @techniques = Technique.order(:name).paginate :page => params[:page] || 1, :per_page => 10
     respond_with @techniques
   end
   
