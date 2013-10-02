@@ -4,8 +4,8 @@
 
 <% @techniques.each do |technique| %>
 
- <h2><span><%= link_to technique.try(:name), technique %></span> (<%= pluralize technique.videos.count, "Video" %>)</h2>
- <p><%= truncate technique.description, length: 200 %></p>
+ <h2><span><%= link_to highlight_name(technique).html_safe, technique %></span> (<%= pluralize technique.videos.count, "Video" %>)</h2>
+ <p><%= highlight_description(technique).html_safe %></p>
  
  <div class="technique_thumbs">
    <% technique.videos.each do |video| %>
@@ -22,6 +22,8 @@
 
 <% end %>
 
-<%= will_paginate(@techniques) %>
+<% if @techniques.count > 0  %>
+  <%= will_paginate(@techniques) %>
+<% end %>
  
 <%= link_to('New Technique', new_technique_path) %>

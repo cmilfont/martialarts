@@ -16,4 +16,19 @@ describe Technique do
     it { should validate_presence_of :user }
   end
   
+  describe "#simple_search" do
+    
+    before do 
+      FakeWeb.allow_net_connect = false
+      FakeWeb.register_uri(:any, %r|\Ahttp://localhost:9200|, :body => @elasticsearch_object)
+      Technique.should_receive(:find).and_return FactoryGirl.build(:technique)
+    end
+    
+    it "deveria buscar por uma expressão" do
+      @params = { q: "Juji", page: 1 }
+      Technique.simple_search(@params).should be_empty
+    end
+    
+  end
+  
 end

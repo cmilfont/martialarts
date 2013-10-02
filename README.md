@@ -17,7 +17,14 @@ Technique.index.import Technique.all
 
 Technique.search do
   query do 
-    string "name:Baseball"
+    string "description:anaconda"
+  end
+  sort { by :name }
+end
+
+Technique.search do
+  query do 
+    string "name:Baseball AND description:juji"
   end
   sort { by :name }
 end
@@ -34,15 +41,15 @@ Technique.search do
   end
 end
 
-
-Technique.search do
-  query do
-    boolean do
-      must   { string 'name:juji' }
-    end
-    
-    string "description:judo"
-    
+t = Technique.search do
+  query do 
+    match 'name',  'baseball'
+    match 'description', 'juji'
   end
-  
+  sort { by :name }
+  highlight :name, :description, :options => { :tag => '<strong class="highlight">' }
+end
+
+t.results.each do |technique|
+  puts "Name: #{ technique.name }; Highlighted: #{technique.highlight.name}"
 end

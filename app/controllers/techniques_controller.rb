@@ -6,6 +6,11 @@ class TechniquesController < ApplicationController
   
   respond_to :json, :html
   
+  def search    
+    @techniques = Technique.simple_search params
+    respond_with @techniques, :include => [:videos], :methods => [:highlight]
+  end
+  
   def index
     @techniques = Technique.order(:name).paginate :page => params[:page] || 1, :per_page => 10
     respond_with @techniques
@@ -23,7 +28,6 @@ class TechniquesController < ApplicationController
   end
   
   def create
-#    params.require(:martialart).permit(:name, :description)
     @technique = Technique.new params.require(:technique)
     @technique.user = current_user
     @technique.save

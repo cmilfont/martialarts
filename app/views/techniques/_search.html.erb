@@ -1,0 +1,5 @@
+<%= form_tag( search_techniques_path , method: "get") do %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+  <%= "<span style=\"color:#1973BF;\"> Consulta por: #{params[:q]} </span>".html_safe if params[:q].present? %>
+<% end %>

@@ -19,5 +19,22 @@ class Technique < ActiveRecord::Base
   has_many :videos
   
   validates_presence_of :name, :description, :user
+  
+  def self.simple_search params
+    query = params[:q]
+    @techniques = []
+    @page = params[:page] || 1
+
+    if query.present?
+      @techniques = Technique.search :page => @page do
+        query do 
+          string query
+        end
+        sort { by :name }
+        highlight :name, :description, :options => { :tag => '<strong class="highlight">' }
+      end
+    end
+    @techniques
+  end
     
 end

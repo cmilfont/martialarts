@@ -63,6 +63,7 @@ GEM
     execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
+    fakeweb (1.3.0)
     hashr (0.0.22)
     hike (1.2.3)
     i18n (0.6.5)
@@ -181,6 +182,7 @@ DEPENDENCIES
   devise
   djr
   factory_girl
+  fakeweb
   jquery-rails
   memcachier
   paperclip

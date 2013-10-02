@@ -45,4 +45,6 @@ group :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'simplecov-rcov'
+  #para testar o tire
+  gem 'fakeweb'
 end

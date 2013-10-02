@@ -3,6 +3,17 @@ require 'spec_helper'
 
 describe TechniquesController do
   
+  describe "GET #search" do
+    
+    it "Deveria buscar as 'tecnicas'" do
+      @query = "Anaconda"
+      @page = "1"      
+      Technique.should_receive(:simple_search).once.and_return []
+      get :search, q: @query, page: @page
+    end
+    
+  end
+  
   describe "GET #index" do
         
     it "Should list Techniques" do
