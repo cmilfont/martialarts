@@ -26,7 +26,7 @@ class Technique < ActiveRecord::Base
     @page = params[:page] || 1
 
     if query.present?
-      @techniques = Technique.search :page => @page, :load => true do
+      @techniques = Technique.search page: @page, load: true do
         query do 
           string query
         end
@@ -34,6 +34,7 @@ class Technique < ActiveRecord::Base
         highlight :name, :description, :options => { :tag => '<strong class="highlight">' }
       end
     end
+
     @techniques
   end
     

@@ -1,11 +1,10 @@
 <%= render 'search' %>
 
 <h1><span>Techniques</span></h1>
+<% @techniques.each_with_hit do |technique, hit| %>
 
-<% @techniques.each do |technique| %>
-
- <h2><span><%= link_to highlight_name(technique).html_safe, technique %></span> (<%= pluralize technique.videos.count, "Video" %>)</h2>
- <p><%= highlight_description(technique).html_safe %></p>
+ <h2><span><%= link_to highlight_name(technique, hit).html_safe, technique %></span> (<%= pluralize technique.videos.count, "Video" %>)</h2>
+ <p><%= highlight_description(technique, hit).html_safe %></p>
  
  <div class="technique_thumbs">
    <% technique.videos.each do |video| %>
