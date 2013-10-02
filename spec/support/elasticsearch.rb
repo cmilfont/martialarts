@@ -11,24 +11,31 @@ RSpec::Matchers.define :be_mapped_by do |expected|
     @boost = boost
   end
   
+  chain :with_type do |type|
+    @type = type
+  end
+  
   match do |actual|
     @result = actual.class.mapping[expected].present?
     @result = (@result && actual.class.mapping[expected][:analyzer] == @analyzer) if @analyzer.present?
     @result = (@result && actual.class.mapping[expected][:boost] == @boost) if @boost.present?
+    @result = (@result && actual.class.mapping[expected][:type] == @type) if @type.present?
     @result
   end
   
   failure_message_for_should do |actual|
-    @msg = "expected that #{actual} would be mapped by #{expected}"
-    @msg ="expected that #{actual} would be mapped by #{expected} with analizer #{@analyzer}" if @analyzer.present?
-    @msg ="expected that #{actual} would be mapped by #{expected} with boost #{@boost}" if @boost.present?
+    @msg = "expected that #{actual.class} would be mapped by #{expected}"
+    @msg ="expected that #{actual.class} would be mapped by #{expected} with analizer #{@analyzer}" if @analyzer.present?
+    @msg ="expected that #{actual.class} would be mapped by #{expected} with boost #{@boost}" if @boost.present?
+    @msg ="expected that #{actual.class} would be mapped by #{expected} with type #{@type}" if @type.present?
     @msg
   end
 
   failure_message_for_should_not do |actual|
-    @msg = "expected that #{actual} would not be mapped by #{expected}"
-    @msg ="expected that #{actual} would be mapped by #{expected} without analizer #{@analyzer}" if @analyzer.present?
-    @msg ="expected that #{actual} would be mapped by #{expected} without boost #{@boost}" if @boost.present?
+    @msg = "expected that #{actual.class} would not be mapped by #{expected}"
+    @msg ="expected that #{actual.class} would be mapped by #{expected} without analizer #{@analyzer}" if @analyzer.present?
+    @msg ="expected that #{actual.class} would be mapped by #{expected} without boost #{@boost}" if @boost.present?
+    @msg ="expected that #{actual.class} would be mapped by #{expected} without boost #{@type}" if @type.present?
     @msg
   end
 
@@ -36,6 +43,7 @@ RSpec::Matchers.define :be_mapped_by do |expected|
     @msg = "be mapped by #{expected}"
     @msg ="be mapped by #{expected} with analizer #{@analyzer}" if @analyzer.present?
     @msg ="be mapped by #{expected} with boost #{@boost}" if @boost.present?
+    @msg ="be mapped by #{expected} with type #{@type}" if @type.present?
     @msg
   end
   

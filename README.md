@@ -13,6 +13,8 @@ http://localhost:9200/_plugin/browser/?database=techniques&table=technique
 
 Reindexar
 Technique.all.each { |technique| technique.update_index }
+
+Technique.index.delete
 Technique.index.import Technique.all
 
 Technique.search do

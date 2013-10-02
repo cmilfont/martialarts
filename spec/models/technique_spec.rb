@@ -23,6 +23,9 @@ describe Technique do
     it { should be_mapped_by :description }
     it { should be_mapped_by(:description).with_analyzer 'snowball' }
     it { should be_mapped_by :user_id }
+    it { should be_mapped_by(:user_id).with_type 'integer' }
+    it { should be_mapped_by :created_at }
+    it { should be_mapped_by(:created_at).with_type 'date' }
   end
   
   describe "#simple_search" do
@@ -35,8 +38,8 @@ describe Technique do
       #Technique.should_receive(:find).and_return FactoryGirl.build(:technique)
     end
     
-    it "deveria buscar por uma expressão" do
-      @params = { q: "Juji", page: 1 }
+    it "deveria buscar por uma expressão" do      
+      @params = ActionController::Parameters.new(technique: { data_inicial: "", data_final: ""}, q: "Juji", page: "1").permit!
       Technique.simple_search(@params).should be_empty
     end
     
