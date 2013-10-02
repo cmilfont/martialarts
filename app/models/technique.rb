@@ -26,7 +26,7 @@ class Technique < ActiveRecord::Base
     @page = params[:page] || 1
 
     if query.present?
-      @techniques = Technique.search :page => @page do
+      @techniques = Technique.search :page => @page, :load => true do
         query do 
           string query
         end

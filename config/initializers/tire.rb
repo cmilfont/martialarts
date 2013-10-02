@@ -1,3 +1,3 @@
-Tire.configure do
-  wrapper ProxyObject
-end
+# Tire.configure do
+#   wrapper ProxyObject
+# end

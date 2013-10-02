@@ -16,9 +16,22 @@ describe Technique do
     it { should validate_presence_of :user }
   end
   
+  describe "configure mapping" do
+    
+    it { Technique.mapping[:name].should be_present }
+    it { Technique.mapping[:name][:analyzer].should == 'snowball' }
+    it { Technique.mapping[:name][:boost].should == 100 }
+    it { Technique.mapping[:description].should be_present }
+    it { Technique.mapping[:description][:analyzer].should == 'snowball' }
+    it { Technique.mapping[:user_id].should be_present }
+     
+  end
+  
   describe "#simple_search" do
     
     before do 
+      @elasticsearch_object ||= '{"took": 1,"timed_out": false,"_shards": {"total": 5,"successful": 5,"failed": 0},"hits": {"total": 0,"max_score": null,"hits": []}}'
+      
       FakeWeb.allow_net_connect = false
       FakeWeb.register_uri(:any, %r|\Ahttp://localhost:9200|, :body => @elasticsearch_object)
       Technique.should_receive(:find).and_return FactoryGirl.build(:technique)
