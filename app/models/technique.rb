@@ -3,13 +3,63 @@ class Technique < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
   
-  mapping :_timestamp => true do
-    indexes :name,        :analyzer => 'snowball', :boost => 100
-    indexes :description, :analyzer => 'snowball'
-    indexes :user_id,     :type => 'integer'
-    indexes :created_at,  :type => 'date'
-  end
-    
+  # curl -XPOST localhost:9200/techniques -d '{
+  #     "settings" : {
+  #         "number_of_shards" : 1,
+  #         "number_of_replicas": 1,
+  #         "analysis": {
+  #           "filter" : {
+  #             "my_edge": {
+  #               "type" : "edgeNGram",
+  #               "max_gram": 10
+  #             }
+  #           },
+  #           "analyzer" :{
+  #             "brazilian_snowball" : {
+  #               "tokenizer"  : "standard",                 
+  #                "filter"    : ["standard", "lowercase", "my_edge", "asciifolding"],
+  #                "language"  : "Brazilian",
+  #                "type"      : "snowball"
+  #             }
+  #           }
+  #         }
+  #     },
+  #     "mappings" : {
+  #         "technique" : {
+  #             "_source" : { "enabled" : false },
+  #             "properties" : {
+  #                 "name" : { "type" : "string", "analyzer" : "brazilian_snowball" }
+  #             }
+  #         }
+  #     }
+  # }'
+  
+  # settings :number_of_shards => 1,
+  #          :number_of_replicas => 1,
+  #          :analysis => {
+  #            :filter => {
+  #              :my_edge  => {
+  #                "type"     => "edgeNGram",
+  #                "max_gram" => 5,
+  #                "min_gram" => 1 
+  #              }
+  #            },
+  #            :analyzer => {
+  #              :brazilian_snowball => {
+  #                "tokenizer"  => "standard",                 
+  #                "filter"       => ["standard", "lowercase", "my_edge", 'asciifolding'],
+  #                "language"     => "Brazilian",
+  #                "type"         => "snowball" }
+  #            }
+  #          }
+           
+   mapping do
+     indexes :name, :type => 'string' #, :analyzer => 'brazilian_snowball' #, :boost => 100
+     indexes :description, :analyzer => 'snowball'
+     indexes :user_id,     :type => 'integer'
+     indexes :created_at,  :type => 'date'
+   end
+  
   belongs_to :user
   has_many :martialart_techniques, :inverse_of => :technique
   accepts_nested_attributes_for :martialart_techniques
@@ -28,7 +78,11 @@ class Technique < ActiveRecord::Base
     data_final = DateTime.parse data_final if data_final.present?
 
     @techniques = Technique.search page: @page, load: true do
-      query { string query } if query.present?
+      if query.present?
+        query do
+          string query
+        end
+      end
       filter :range, created_at: { gte: data_inicial.strftime("%Y-%m-%d") } if data_inicial.present? && data_inicial.is_a?(DateTime)
       filter :range, created_at: { lte: data_final.strftime("%Y-%m-%d") } if data_final.present? && data_final.is_a?(DateTime)
       sort { by :name }

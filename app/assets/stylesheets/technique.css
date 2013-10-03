@@ -21,7 +21,8 @@ body {
 /* TOPO */
 #topo {
   height: 128px;
-  background: #1872BE url("/assets/topoFundo.png") repeat-x top;
+/*  background: #1872BE url("/assets/topoFundo.png") repeat-x top; */
+  background: #EBE6D4;
 }
 #topo.interno {
   height: 60px;
@@ -50,13 +51,19 @@ ul#menu a {
   text-decoration: none;
   text-align: center;
   color: #FFFFFF;
+  color: #624230;
 }
 ul#menu a.ativo,
 ul#menu a:hover {
   padding: 5px 0 0 0;
   color: #25221D;
+/*
   background: #E1E68C;
   border: 3px solid #B3B81D;
+*/
+  background: #C4B798;
+  border: 3px solid #908062;
+  
   border-bottom: none;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -67,15 +74,22 @@ ul#menu a:hover {
 }
 ul#menu a:hover {
   color: #FFFFFF;
-  background: #B3B81D;
+/*  background: #B3B81D; */
+  background: #C4B798;
 }
 /* /MENU */
 
 /* MEIO */
 #meio {
   padding: 40px 0;
+/*
   background: #E1E68C;
   border-top: 3px solid #B3B81D;
+*/
+/*  background: #BDB091; */
+  background: #C4B798;
+  border-top: 3px solid #908062;
+  
 }
 #meio.interno {
   /*padding: 25px;*/
@@ -142,16 +156,27 @@ ul#menu a:hover {
 #conteudo h1 span {
   font-weight: bold;
   color: #0E70CB;
+  color: #4F6B8F;
 }
 #conteudo h2 {
   padding: 3px 10px;
   font-size: 18px;
   font-weight: normal;
-  background: #E1E68C;
+/*  background: #E1E68C;  */
+  background: #C18948;
+  background: #874225;
+  
+  background: #AC844E;
+  
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
+  color: #EEE8D4;
 }
+#conteudo h2 a {
+  color: #EEE8D4;
+}
+
 #conteudo ul {
   width: 400px;
 }
@@ -245,7 +270,9 @@ ul#menu a:hover {
   padding: 20px 0;
   height: 128px;
   background: #1973BF url("/assets/baseFundo.png") no-repeat center;
+  background: #938363;
   border-top: 3px solid #0E4A7C;
+  border-top: 3px solid #6B482E;
 }
 #base li {
   float: left;

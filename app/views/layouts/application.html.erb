@@ -12,26 +12,23 @@
   
 <body>
 
-<% if current_page? root_path %>
+
 <div id="topo">
-<% else %>
-<div id="topo" class="interno">
-<% end %>
 
 <div class="container">
 
-  <% if current_page? root_path %>
+  <!-- <% if current_page? root_path %>
   <img src="/assets/logo_martialarts.png" alt="TREENING" border="0" style="margin-top: 15px" />
   <% else %>
   <img src="/assets/logo_pequena_martialarts.png" alt="TREENING" border="0" style="margin-top: -5px" />
-  <% end %>
+  <% end %> -->
+  
+  <div class="logo">
+    Martial Arts
+  </div>
+  <%= render 'search' %>
 
-
-  <% if current_page? root_path %>
   <ul id="menu">
-  <% else %>
-  <ul id="menu" class="interno">
-  <% end %>
 
     <li><%= link_to_unless_current('Início', root_path) { link_to 'Início', root_path, :class => 'ativo' } %></li>
     <li><%= link_to_unless_current('Vídeos', techniques_path ) { link_to 'Vídeos', techniques_path, :class => 'ativo' } %></li>
