@@ -21,6 +21,7 @@ gem 'rails_12factor', group: :production
 gem 'paperclip'
 gem 'will_paginate'
 gem 'devise'
+gem 'omniauth-facebook'
 
 gem "djr"
 
