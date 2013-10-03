@@ -1,9 +1,14 @@
-<%= form_tag( search_techniques_path , method: "get") do %>
-  <%= text_field_tag(:q) %>
-  <span>Criado entre:</span>
-  <%= text_field :technique, 'data_inicial', :type => "date"%>
-  <span> e </span>
-  <%= text_field :technique, 'data_final', :type => "date" %>
-  <%= submit_tag("Search") %>
-  <%= "<span style=\"color:#4F6B8F;\"> Consulta por: #{params[:q]} </span>".html_safe if params[:q].present? %>
-<% end %>
+<form class="search_form" accept-charset="UTF-8" action="/techniques/search" method="get">
+  <div style="margin:0;padding:0;display:inline">
+    <span>Busca por técnica:</span>
+    <input name="utf8" type="hidden" value="✓"></div>
+    <input id="q" name="q" type="text">
+    <br/>
+    <span>Criada entre:</span>
+    <input id="technique_data_inicial" name="technique[data_inicial]" type="date">
+    <span> e </span>
+    <input id="technique_data_final" name="technique[data_final]" type="date">
+    <input name="commit" type="submit" value="Buscar">
+    <br/>
+    <%= "<span style=\"color:#4F6B8F;\"> Consulta por: #{params[:q]} </span>".html_safe if params[:q].present? %>
+</form>

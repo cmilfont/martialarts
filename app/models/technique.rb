@@ -3,37 +3,6 @@ class Technique < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
   
-  # curl -XPOST localhost:9200/techniques -d '{
-  #     "settings" : {
-  #         "number_of_shards" : 1,
-  #         "number_of_replicas": 1,
-  #         "analysis": {
-  #           "filter" : {
-  #             "my_edge": {
-  #               "type" : "edgeNGram",
-  #               "max_gram": 10
-  #             }
-  #           },
-  #           "analyzer" :{
-  #             "brazilian_snowball" : {
-  #               "tokenizer"  : "standard",                 
-  #                "filter"    : ["standard", "lowercase", "my_edge", "asciifolding"],
-  #                "language"  : "Brazilian",
-  #                "type"      : "snowball"
-  #             }
-  #           }
-  #         }
-  #     },
-  #     "mappings" : {
-  #         "technique" : {
-  #             "_source" : { "enabled" : false },
-  #             "properties" : {
-  #                 "name" : { "type" : "string", "analyzer" : "brazilian_snowball" }
-  #             }
-  #         }
-  #     }
-  # }'
-  
   # settings :number_of_shards => 1,
   #          :number_of_replicas => 1,
   #          :analysis => {

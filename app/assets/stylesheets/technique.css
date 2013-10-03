@@ -10,6 +10,7 @@ body {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color: #25221D;
   background: #1973BF;
+  background: #938363;
 }
 .container {
 	position: relative;
@@ -144,14 +145,16 @@ ul#menu a:hover {
 /* /MENURAPIDO */
 
 /* CONTEUDO */
+
 #conteudo {
-  padding: 35px 0;
+  padding-bottom: 35px;
   background: #FFFFFF url("/assets/conteudoFundo.png") repeat-x top;
-  border-top: 1px solid #6C676B;
+/*  border-top: 1px solid #6C676B; */
 }
 #conteudo h1 {
   font-size: 23px;
   font-weight: normal;
+  padding: 35px 0;
 }
 #conteudo h1 span {
   font-weight: bold;
@@ -195,7 +198,11 @@ ul#menu a:hover {
 }
 
 #conteudo form label { /*width: 180px;*/ }
-#conteudo form { width: 700px }
+#conteudo form { 
+  width: 500px; 
+  margin: auto;
+  background: #C4B798;
+}
 
 #conteudo form h1 {
   margin: 10px 0;

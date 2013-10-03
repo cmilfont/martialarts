@@ -3,3 +3,16 @@
   color: #B18E52;
   color: #874225;
 }
+
+.search_form {
+  width: 550px;
+
+  top: 51px;
+  line-height: 30px;
+  margin-top: 15px;
+}
+
+.search_form input#q {
+  width: 300px;
+  height: 20px;
+}
