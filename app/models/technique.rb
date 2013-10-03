@@ -54,7 +54,7 @@ class Technique < ActiveRecord::Base
   #          }
            
    mapping do
-     indexes :name, :type => 'string' #, :analyzer => 'brazilian_snowball' #, :boost => 100
+     indexes :name, :type => 'string', :analyzer => 'snowball', :boost => 100
      indexes :description, :analyzer => 'snowball'
      indexes :user_id,     :type => 'integer'
      indexes :created_at,  :type => 'date'
