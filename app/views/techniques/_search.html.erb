@@ -4,10 +4,10 @@
     <input name="utf8" type="hidden" value="✓"></div>
     <input id="q" name="q" type="text">
     <br/>
-    <span>Criada entre:</span>
-    <input id="technique_data_inicial" name="technique[data_inicial]" type="date">
-    <span> e </span>
-    <input id="technique_data_final" name="technique[data_final]" type="date">
+    <!-- <span>Criada entre:</span> -->
+    <input id="technique_data_inicial" name="technique[data_inicial]" type="hidden">
+    <!-- <span> e </span> -->
+    <input id="technique_data_final" name="technique[data_final]" type="hidden">
     <input name="commit" type="submit" value="Buscar">
     <br/>
     <%= "<span style=\"color:#4F6B8F;\"> Consulta por: #{params[:q]} </span>".html_safe if params[:q].present? %>
