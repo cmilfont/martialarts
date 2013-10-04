@@ -19,33 +19,33 @@ curl -X DELETE http://localhost:9200/techniques
 Criar um index
 curl -XPUT http://localhost:9200/techniques/ -d '
 {
-"settings": {
-"analysis": {
-"analyzer": {
-"index_analyzer": {
-"tokenizer": "standard",
-"filter": ["standard", "my_delimiter", "lowercase", "stop", "asciifolding", "porter_stem"]
-},
-"search_analyzer": {
-"tokenizer": "standard",
-"filter": ["standard", "lowercase", "stop", "asciifolding", "porter_stem"]
-}
-},
-"filter": {
-"my_delimiter": {
-"type": "word_delimiter",
-"generate_word_parts": true,                
-"catenate_words": true,
-"catenate_numbers": true,
-"catenate_all": true,
-"split_on_case_change": true,
-"preserve_original": true,
-"split_on_numerics": true,
-"stem_english_possessive": true
-}
-}
-}
-}
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "index_analyzer": {
+          "tokenizer": "standard",
+          "filter": ["standard", "my_delimiter", "lowercase", "stop", "asciifolding", "porter_stem"]
+        },
+        "search_analyzer": {
+          "tokenizer": "standard",
+          "filter": ["standard", "lowercase", "stop", "asciifolding", "porter_stem"]
+        }
+      },
+      "filter": {
+        "my_delimiter": {
+          "type": "word_delimiter",
+          "generate_word_parts": true,                
+          "catenate_words": true,
+          "catenate_numbers": true,
+          "catenate_all": true,
+          "split_on_case_change": true,
+          "preserve_original": true,
+          "split_on_numerics": true,
+          "stem_english_possessive": true
+        }
+      }
+    }
+  }
 }'
 
 == MAPPING ==

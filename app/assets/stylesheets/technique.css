@@ -24,6 +24,13 @@ body {
   height: 128px;
 /*  background: #1872BE url("/assets/topoFundo.png") repeat-x top; */
   background: #EBE6D4;
+  
+  
+  background-image: url(https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-ash3/1044755_173760146135841_1517171679_n.jpg);
+  background-position: 119% 32%;
+  background-repeat: no-repeat;
+  
+  
 }
 #topo.interno {
   height: 60px;
@@ -53,11 +60,16 @@ ul#menu a {
   text-align: center;
   color: #FFFFFF;
   color: #624230;
+  
+  text-shadow: -1px 0 #EBE6D4, 0 1px #EBE6D4, 1px 0 #EBE6D4, 0 -1px #EBE6D4;
+  
 }
 ul#menu a.ativo,
 ul#menu a:hover {
+  text-shadow: "";
+  
   padding: 5px 0 0 0;
-  color: #25221D;
+/*  color: #25221D; */
 /*
   background: #E1E68C;
   border: 3px solid #B3B81D;
@@ -74,7 +86,7 @@ ul#menu a:hover {
   -webkit-border-top-right-radius: 8px;
 }
 ul#menu a:hover {
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
 /*  background: #B3B81D; */
   background: #C4B798;
 }
