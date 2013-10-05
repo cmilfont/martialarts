@@ -3,32 +3,6 @@ class Technique < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
   
-  # settings :number_of_shards => 1,
-  #          :number_of_replicas => 1,
-  #          :analysis => {
-  #            :filter => {
-  #              :my_edge  => {
-  #                "type"     => "edgeNGram",
-  #                "max_gram" => 5,
-  #                "min_gram" => 1 
-  #              }
-  #            },
-  #            :analyzer => {
-  #              :brazilian_snowball => {
-  #                "tokenizer"  => "standard",                 
-  #                "filter"       => ["standard", "lowercase", "my_edge", 'asciifolding'],
-  #                "language"     => "Brazilian",
-  #                "type"         => "snowball" }
-  #            }
-  #          }
-           
-   mapping do
-     indexes :name, :type => 'string', :analyzer => 'snowball', :boost => 100
-     indexes :description, :analyzer => 'snowball'
-     indexes :user_id,     :type => 'integer'
-     indexes :created_at,  :type => 'date'
-   end
-  
   belongs_to :user
   has_many :martialart_techniques, :inverse_of => :technique
   accepts_nested_attributes_for :martialart_techniques
