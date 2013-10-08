@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
- 
+
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
    @email = access_token['extra']['raw_info']['email']
    @facebook_data = mapear_facebook access_token #1
@@ -30,4 +31,5 @@ class User < ActiveRecord::Base
      :login => @data['username']
    }
  end
+
 end

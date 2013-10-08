@@ -14,3 +14,5 @@ test: &test
 production: &production
   <<: *development
   database: martialarts_production
+cucumber:
+  <<: *test

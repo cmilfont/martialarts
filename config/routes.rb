@@ -15,4 +15,6 @@ Martialarts::Application.routes.draw do
     resources :videos, :only => [:create, :destroy]
   end
 
+  resources :tags
+
 end

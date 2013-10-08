@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require djr
+//= require jquery.autocomplete.min
 //= require_tree .

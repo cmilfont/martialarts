@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131001232222) do
+=======
+ActiveRecord::Schema.define(version: 20131007010003) do
+>>>>>>> [#5] Modelagem de tags
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +51,25 @@ ActiveRecord::Schema.define(version: 20131001232222) do
     t.integer "technique_id"
   end
 
+  create_table "tag_techniques", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "technique_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tag_techniques", ["tag_id"], name: "index_tag_techniques_on_tag_id", using: :btree
+  add_index "tag_techniques", ["technique_id"], name: "index_tag_techniques_on_technique_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["user_id"], name: "index_tags_on_user_id", using: :btree
+
   create_table "techniques", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -69,6 +92,7 @@ ActiveRecord::Schema.define(version: 20131001232222) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.string   "name"
     t.string   "nickname"
     t.string   "location"
@@ -82,6 +106,10 @@ ActiveRecord::Schema.define(version: 20131001232222) do
     t.string   "token_facebook"
     t.string   "provider"
     t.string   "uid"
+=======
+    t.string   "authentication_token"
+    t.string   "name"
+>>>>>>> [#5] Modelagem de tags
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -37,6 +37,7 @@
   <div class="quadro" style="width: 280px">
     <h1><span>TAGs</span></h1>
     <p style="font-size: 18px">Estrangulamentos <big>Choke</big>  <big>Strangles</big> BJJ <small>baseball</small> Choke</p>
+    <%= text_field_tag "tags" %>
     <a href="#add_tag">Incluir tag</a>
   </div> <!-- /quadro tags -->
   <br />
@@ -67,6 +68,25 @@ $(function(){
   var video = new Video(<%= @technique.id %>);
   $("[href=#videos]").click(function(){
     return video.cadastrar();
-  });  
+  });
+
+
+  $("#tags").autocomplete({
+    deferRequestBy: 300,
+    serviceUrl: '/tags.json',
+    onSelect: function (suggestion) {
+      alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    },
+    paramName: 'q',
+    transformResult: function(response) {
+      var data = JSON.parse(response);
+      return {
+        suggestions: $.map(data, function(dataItem) {
+          return { value: dataItem.name, data: dataItem.id };
+        })
+      };
+    }
+  });
+
 });
 </script>
