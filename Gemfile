@@ -24,6 +24,7 @@ gem 'paperclip'
 gem 'will_paginate'
 #controle de acesso e autenticacao
 gem 'devise'
+gem 'omniauth-facebook'
 
 #cache
 gem 'memcachier'
