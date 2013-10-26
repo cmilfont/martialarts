@@ -7,16 +7,21 @@ feature "Minhas TAGs em uma técnica", %q{
 } do
   background do
     @id = 1
-    @milfont = FactoryGirl.create :user, admin: true
-    @renata = FactoryGirl.create :user, admin: true, name: "Renata"
 
-    login_as(@milfont, :scope => :user, :run_callbacks => false)
-    @technique = create_technique_mocking_elasticsearch(:id => @id, :name => "Anaconda Choke", :user => @milfont)
-    @tag1 = FactoryGirl.create :tag, user: @milfont, name: "strangleholds"
-    @tag2 = FactoryGirl.create :tag, user: @renata, name: "strangleholds"
+    FactoryGirl.create(:user, admin: true).tap do |user|
+      login_as(user, scope: :user, run_callbacks: false)
+      @technique = create_technique_mocking_elasticsearch(id: @id, name: "Anaconda Choke", user: user)
+      FactoryGirl.create(:tag, user: user, name: "strangleholds").tap do |tag|
+        FactoryGirl.create(:tag_technique, tag: tag, technique: @technique)
+      end
+    end
 
-    TagTechnique.create tag: @tag1, technique: @technique
-    TagTechnique.create tag: @tag2, technique: @technique
+    FactoryGirl.create(:user, admin: true, name: "Renata").tap do |user|
+      FactoryGirl.create(:tag, user: user, name: "strangleholds").tap do |tag|
+        FactoryGirl.create(:tag_technique, tag: tag, technique: @technique)
+      end
+    end
+
   end
 
   scenario "Listar Tags", :js => true, :driver => :webkit do

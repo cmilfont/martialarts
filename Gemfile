@@ -34,13 +34,17 @@ gem 'dalli'
 #busca textual
 gem 'tire'
 
+gem 'jbuilder'
+gem 'elasticsearch'
+
 #transformar os controllers em js
 gem "djr"
 
 gem 'debugger', group: [:development, :test]
 
-group :test do
+group :test, :development do
   gem 'factory_girl'
+
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'rspec-rails'

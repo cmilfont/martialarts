@@ -27,7 +27,7 @@ module Martialarts
       ::Tire.index('tags') do
         delete
         create \
-            settings: {
+        settings: {
           index: {
             :analysis => {
               :analyzer=> {
@@ -89,7 +89,7 @@ module Martialarts
       ::Tire.index('techniques') do
         delete
         create \
-            settings: {
+        settings: {
           index: {
             :analysis => {
               :analyzer=> {

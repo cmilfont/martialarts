@@ -1,15 +1,70 @@
 class Technique < ActiveRecord::Base
   
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
-  
+  include Searchable
+
+  mapping _all: {
+    auto_boost: true,
+    index_analyzer: "index_analyzer",
+    search_analyzer: "search_analyzer"
+  },
+  properties: {
+    created_at: {
+      type: "date",
+      format: "dateOptionalTime"
+    },
+    description: {
+      type: "string",
+      index_analyzer: "index_analyzer",
+      search_analyzer: "search_analyzer"
+    },
+    name: {
+      type: "string",
+      boost: 10,
+      store: true,
+      index_analyzer: "index_analyzer",
+      search_analyzer: "search_analyzer"
+    },
+    updated_at: {
+      type: "date",
+      format: "dateOptionalTime"
+    },
+    user_id: {
+      type: "integer"
+    }
+  }
+
   belongs_to :user
   has_many :martialart_techniques, :inverse_of => :technique
   accepts_nested_attributes_for :martialart_techniques
   has_many :martialarts, :through => :martialart_techniques
   has_many :videos
   validates_presence_of :name, :description, :user
-  
+
+
+  def self.query string_query=""
+    j = Jbuilder.encode do |json|
+      json.query do
+        json.query_string do
+          json.query string_query
+        end
+      end
+
+      json.highlight do
+        json.fields do
+          json.name do
+            json.number_of_fragments 1
+          end
+        end
+
+        json.pre_tags ["<span class=\"highlight\">"]
+        json.post_tags ["</span>"]
+
+      end
+
+    end
+    search j
+  end
+
   def self.simple_search params
     query = params[:q]
     @page = params[:page] || 1

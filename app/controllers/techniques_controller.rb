@@ -13,6 +13,7 @@ class TechniquesController < ApplicationController
   
   def index
     @techniques = Technique.order(:name).paginate :page => params[:page] || 1, :per_page => 10
+    @technique = Technique.new
     respond_with @techniques
   end
   

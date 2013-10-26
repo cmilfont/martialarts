@@ -1,7 +1,25 @@
 class Tag < ActiveRecord::Base
 
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+  include Searchable
+
+  mapping _all: {
+      enabled: true,
+      index_analyzer: "index_analyzer",
+      search_analyzer: "search_analyzer"
+    },
+    properties: {
+      name: {
+        type: 'string',
+        boost: 10.0,
+        index: "analyzed",
+        index_analyzer: "index_analyzer",
+        search_analyzer: "search_analyzer",
+        store: "yes"
+      },
+      user_id: {
+        type: "integer"
+      }
+    }
 
   belongs_to :user
   
