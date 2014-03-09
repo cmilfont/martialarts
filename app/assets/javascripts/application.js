@@ -174,9 +174,11 @@ controller.create( $("form").getJSON() , function(technique){
  
 var template = '<h2><span><a href="/techniques/${this.id}">${this.name}</a></span> (1 Video)</h2><p>${this.description}</p>';
  
-$("a:contains('Edit')").workflow({ 
-  form: ".new_martialart", 
-  area: "#conteudo .container",
-  controller:  new MartialartsController,
-  engine: new ELJS(template)
-});
+$(function(){
+  // $("a:contains('Edit')").workflow({ 
+  //   form: ".new_martialart", 
+  //   area: "#conteudo .container",
+  //   controller:  new MartialartsController,
+  //   engine: new ELJS(template)
+  // });
+})

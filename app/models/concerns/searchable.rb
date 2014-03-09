@@ -131,7 +131,7 @@ module Searchable
       self.esclient.indices.create index: self.name.tableize, body: self.index[self.name.tableize.to_sym]
     end
 
-    def mapping conf
+    def mapping conf={}
       self.index[self.name.tableize.to_sym][:mappings][self.name.tableize.singularize.to_sym] = {
         #_source: { enabled: false }
       }.merge(conf)

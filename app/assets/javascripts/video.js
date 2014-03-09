@@ -34,6 +34,7 @@ function Video(technique_id) {
       if(ampersandPosition != -1) {
         video_id = video_id.substring(0, ampersandPosition);
       }
+      video_id = video_id.replace(/\#.*/, "");
       return "http://www.youtube.com/embed/" + video_id + "?html5=1";
     },
     vimeo: function(link) {
