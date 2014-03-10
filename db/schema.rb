@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20131001232222) do
-=======
-ActiveRecord::Schema.define(version: 20131007010003) do
->>>>>>> [#5] Modelagem de tags
+ActiveRecord::Schema.define(version: 20131006203424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +88,6 @@ ActiveRecord::Schema.define(version: 20131007010003) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.string   "name"
     t.string   "nickname"
     t.string   "location"
@@ -106,10 +101,7 @@ ActiveRecord::Schema.define(version: 20131007010003) do
     t.string   "token_facebook"
     t.string   "provider"
     t.string   "uid"
-=======
     t.string   "authentication_token"
-    t.string   "name"
->>>>>>> [#5] Modelagem de tags
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
