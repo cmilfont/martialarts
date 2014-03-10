@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+ruby "2.1.1"
 
 #Rails gems
 gem 'rails', '4.0.0'
@@ -40,7 +40,7 @@ gem 'elasticsearch'
 #transformar os controllers em js
 gem "djr"
 
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
 
 group :test, :development do
   gem 'factory_girl'
