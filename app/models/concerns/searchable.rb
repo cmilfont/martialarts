@@ -65,25 +65,26 @@ module Searchable
           :analyzer=> {
             :index_analyzer=> {
               :tokenizer=> "standard",
-              :filter=> ["standard", "my_delimiter", "lowercase", "stop", "asciifolding", "my_stemmer", "porter_stem", "my_edge"]
+              :filter=> ["standard", "my_delimiter", "lowercase", "my_stop", "asciifolding", "my_edge", "my_stemmer"],
+              :char_filter => "html_strip"
             },
             :search_analyzer=> {
               :tokenizer=> "standard",
-              :filter=> ["standard", "lowercase", "stop", "asciifolding", "porter_stem", "my_stemmer"] #"hunspell_ptbr"
+              :filter=> ["standard", "lowercase", "my_stop", "asciifolding", "my_stemmer"]
             }
           },
           :filter=> {
-            #http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-hunspell-tokenfilter.html
-            :hunspell_ptbr => {
-              type: "hunspell",
-              locale: "pt_BR",
-              ignoreCase: true,
-              dedup: false
+
+            my_stop: {
+              type: "stop",
+              stopwords: "_brazilian_"
             },
+
             my_stemmer: {
-              type: "snowball",
-              name: "Brazilian"
+              type: "stemmer",
+              name: "minimal_portuguese"
             },
+
             :my_delimiter => {
               :type=> "word_delimiter",
               :generate_word_parts=> true,
@@ -93,12 +94,12 @@ module Searchable
               :split_on_case_change=> true,
               :preserve_original=> true,
               :split_on_numerics=> true,
-              :stem_english_possessive=> true
+              :stem_english_possessive=> false
             },
             my_edge: {
               type: 'edgeNGram', #1 to 10 letters, from the start
               min_gram: 1,
-              max_gram: 10,
+              max_gram: 50,
               side: 'front'
             }
           }

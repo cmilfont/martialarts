@@ -1,4 +1,9 @@
 class Technique < ActiveRecord::Base
+  def self.search term=""
+    results = self.search_es term
+    ids = results["hits"]["hits"].map{|hit| hit["_id"] }
+    where(id: ids)
+  end
   
   include Searchable
 

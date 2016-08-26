@@ -6,7 +6,11 @@ Martialarts::Application.routes.draw do
   
   devise_for :users
   
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :api] do
+    collection do
+      post :api
+    end
+  end
   
   resources :techniques do
     collection do
